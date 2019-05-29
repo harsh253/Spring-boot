@@ -1,0 +1,37 @@
+package com.springboot.Service;
+
+import com.springboot.DAO.BookDAO;
+import com.springboot.Entity.Book;
+import com.springboot.Entity.BookUpdatePayload;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.Collection;
+import java.util.Optional;
+
+@Service
+public class BookService {
+
+    @Autowired
+    private BookDAO bookDAO;
+
+    public Collection<Book> getBooks(){
+        return bookDAO.getBooks();
+    }
+
+    public Book createBook(Book book) {
+        return bookDAO.createBook(book);
+    }
+
+    public Optional<Book> getBookById(String id) {
+        return bookDAO.getBookById(id);
+    }
+
+    public Optional<Book> deleteBookById(String id) {
+        return bookDAO.deleteBookById(id);
+    }
+
+    public Optional<Book> updateBookById(String id, BookUpdatePayload bookUpdatePayload) {
+        return bookDAO.updateBookById(id, bookUpdatePayload);
+    }
+}
